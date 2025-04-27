@@ -8,10 +8,10 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ESP</groupId>
-	<artifactId>Project</artifactId>
+	<groupId>com.instanote</groupId>
+	<artifactId>esp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Project</name>
+	<name>esp</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -50,6 +50,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>io.github.thoroldvix</groupId>
+            <artifactId>youtube-transcript-api</artifactId>
+            <version>0.3.6</version>
+        </dependency>
 	</dependencies>
 
 	<build>
