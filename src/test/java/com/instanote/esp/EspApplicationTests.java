@@ -1,10 +1,10 @@
-package com.ESP.Project;
+package com.instanote.esp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectApplicationTests {
+class EspApplicationTests {
 
 	@Test
 	void contextLoads() {
