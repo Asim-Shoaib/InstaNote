@@ -1,0 +1,29 @@
+package com.instanote.utils;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+
+public class UtilsTest {
+    final private static String testVideo1 = "https://www.youtube.com/watch?v=Hi7rK0hZnfc";
+    @Test
+    public void testExtractVideoId() {
+        String videoId = TranscriptionHandler.extractVideoId(testVideo1);
+        System.out.println("Extracted Video ID: " + videoId);
+        assertEquals("Hi7rK0hZnfc",videoId, "Video ID should be extracted correctly from the URL.");
+    }
+
+    @Test
+    public void testGetTranscript() {
+        try {
+            String transcriptText = TranscriptionHandler.getTranscript(testVideo1);
+            System.out.println("Transcript Text: " + transcriptText);
+            Assertions.assertNotEquals(null, transcriptText, "Transcript should not be null.");
+            Assertions.assertEquals(transcriptText.length() > 0, true, "Transcript should not be empty.");
+            Assertions.assertTrue(transcriptText instanceof String, "Transcript should be of type String.");
+        } catch (Exception e) {
+            Assertions.fail("Exception should not be thrown: " + e.getMessage());
+        }
+    }
+}
