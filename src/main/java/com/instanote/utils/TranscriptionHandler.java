@@ -35,7 +35,7 @@ class TranscriptionHandler {
             return transcriptText;
         }
         else {
-            throw new Exception("Invalid video URL: " + videoUrl);
+            throw new IllegalArgumentException("Invalid video URL: " + videoUrl);
         }
     }
 }
