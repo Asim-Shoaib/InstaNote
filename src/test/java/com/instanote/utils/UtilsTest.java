@@ -20,7 +20,7 @@ public class UtilsTest {
             String transcriptText = TranscriptionHandler.getTranscript(testVideo1);
             System.out.println("Transcript Text: " + transcriptText);
             Assertions.assertNotNull(transcriptText, "Transcript should not be null.");
-            Assertions.assertEquals(transcriptText.length() > 0, true, "Transcript should not be empty.");
+            Assertions.assertTrue(transcriptText.length() > 0, "Transcript should not be empty.");
             Assertions.assertTrue(transcriptText instanceof String, "Transcript should be of type String.");
         } catch (Exception e) {
             // Assertions.fail("Exception should not be thrown: " + e.getMessage()); // Known bug, it fails on cloud servers as Youtube blocks certain IPs
