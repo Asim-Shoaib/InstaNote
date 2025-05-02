@@ -19,7 +19,7 @@ public class UtilsTest {
         try {
             String transcriptText = TranscriptionHandler.getTranscript(testVideo1);
             System.out.println("Transcript Text: " + transcriptText);
-            Assertions.assertNotEquals(null, transcriptText, "Transcript should not be null.");
+            Assertions.assertNotNull(transcriptText, "Transcript should not be null.");
             Assertions.assertEquals(transcriptText.length() > 0, true, "Transcript should not be empty.");
             Assertions.assertTrue(transcriptText instanceof String, "Transcript should be of type String.");
         } catch (Exception e) {
