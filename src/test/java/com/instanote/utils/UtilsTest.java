@@ -1,20 +1,11 @@
 package com.instanote.utils;
 
 import org.junit.jupiter.api.Test;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.Assertions;
 
 public class UtilsTest {
     final private static String testVideo1 = "https://www.youtube.com/watch?v=Hi7rK0hZnfc";
     final private static String testPlaylistURL = "https://www.youtube.com/watch?v=HkMXiQ4qUc8&list=PLYt5jguM4dGwRe--seOjAKjE-ZIiDCw_X";
-    private static Dotenv dotenv = Dotenv.load();
-
-    @Test 
-    public void loadApiKey() {
-        String apiKey = dotenv.get("YOUTUBE_API_KEY");
-        Assertions.assertNotNull(apiKey, "API key should be loaded from environment variables.");
-        Assertions.assertFalse(apiKey.isEmpty(), "API key should not be empty.");
-    }
 
     @Test
     public void testExtractVideoId() {

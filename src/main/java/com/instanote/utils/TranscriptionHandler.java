@@ -14,8 +14,6 @@ import io.github.thoroldvix.internal.TranscriptApiFactory;
 import io.github.thoroldvix.api.TranscriptFormatter;
 
 class TranscriptionHandler {
-    private static Dotenv dotenv = Dotenv.load();
-    private static final String YOUTUBE_API_KEY = dotenv.get("YOUTUBE_API_KEY");
     private static YoutubeTranscriptApi youtubeTranscriptApi = TranscriptApiFactory.createDefault();
     public static String extractVideoId(String videoUrl) {
         String pattern = "(?<=watch\\?v=|/videos/|embed/|youtu\\.be/|/v/|watch\\?v%3D|%2Fvideos%2F|embed%2F|youtu\\.be%2F|%2Fv%2F)[^#&?\\n]*";
@@ -56,6 +54,18 @@ class TranscriptionHandler {
     }
 
     public static String getPlaylistTranscript(String playlistUrl) throws Exception {
+        String YOUTUBE_API_KEY;
+        try {
+            Dotenv dotenv = Dotenv.load();
+            YOUTUBE_API_KEY = dotenv.get("YOUTUBE_API_KEY");
+        }
+        catch (Exception e) {
+           YOUTUBE_API_KEY = System.getenv("YOUTUBE_API_KEY");
+        }
+        
+        if (YOUTUBE_API_KEY == null || YOUTUBE_API_KEY.isEmpty()) {
+            throw new IllegalArgumentException("API key not found.");
+        }
         String playlistId = extractPlaylistId(playlistUrl);
         String transcriptText = "";
         if (playlistId != null) {
