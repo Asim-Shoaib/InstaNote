@@ -22,7 +22,7 @@ class TranscriptionHandler {
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = compiledPattern.matcher(videoUrl);
         if (matcher.find()) {
-            return matcher.group(1);
+            return matcher.group();
         } else {
             return null;
         }
