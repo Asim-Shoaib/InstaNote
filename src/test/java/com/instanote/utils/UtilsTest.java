@@ -42,4 +42,15 @@ public class UtilsTest {
             Assertions.assertTrue(transcriptText instanceof String, "Playlist transcript should be of type String.");
         } catch (Exception e) {}
     }
+
+    @Test
+    public void testSendMessage() {
+        GeminiSessionHandler sessionHandler = new GeminiSessionHandler();
+        sessionHandler.sendMessage("Hello, how are you?");
+        String response = sessionHandler.getSessionConvo().toString();
+        System.out.println("Response: " + response);
+        Assertions.assertNotNull(response, "Response should not be null.");
+        Assertions.assertTrue(response.length() > 0, "Response should not be empty.");
+        Assertions.assertTrue(response instanceof String, "Response should be of type String.");
+    }
 }
