@@ -48,12 +48,12 @@ public class TestGenerator {
             System.out.println("Transcript is empty or null.");
             return;
         }
-        prompt = prompt.concat(String.format("Transcript: %s\n", transcriptText));
-        prompt = prompt.concat(String.format("Generate %d MCQs based on the transcript and make sure to follow the above instructions.\n", numQuestions));
+        this.prompt = this.prompt.concat(String.format("Transcript: %s\n", transcriptText));
+        this.prompt = this.prompt.concat(String.format("Generate %d MCQs based on the transcript and make sure to follow the above instructions.\n", numQuestions));
     }
 
     public String generateMCQs() {
-        String response = geminiSessionHandler.sendMessage(prompt);
+        String response = geminiSessionHandler.sendMessage(this.prompt);
         if (response == null || response.isEmpty()) {
             System.out.println("Error generating MCQs.");
             return null;
