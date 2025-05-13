@@ -13,7 +13,7 @@ public class TestGenerator {
                 All MCQs must be in English, no matter the language of the transcript.
                 The MCQs are to be shown in a webapp so provide a structured answer in JSON format
                 [
-                    {"question":"...", "choices":[{"id":"a", "text":"...", "isCorrect":"true"}, {"id":"B",. .....}], ....
+                    {"question":"1. ...", "choices":[{"id":"a", "text":"...", "isCorrect":"true"}, {"id":"B",. .....}], ....
                 ]
             """
     ;
@@ -25,7 +25,7 @@ public class TestGenerator {
     private GeminiSessionHandler geminiSessionHandler = new GeminiSessionHandler();
     
 
-    TestGenerator(String videoUrl, int numQuestions, boolean isPlaylist) {
+    public TestGenerator(String videoUrl, int numQuestions, boolean isPlaylist) {
         this.videoUrl = videoUrl;
         this.numQuestions = numQuestions;
         if (isPlaylist) {
