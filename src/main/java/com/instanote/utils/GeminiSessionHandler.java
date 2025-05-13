@@ -28,7 +28,7 @@ public class GeminiSessionHandler {
         return apiKey;
     }
 
-    public void sendMessage(String message) {
+    public String sendMessage(String message) {
         JSONObject messageObj = new JSONObject();
         messageObj.put("role", "user");
         messageObj.put("parts", new JSONArray());
@@ -46,10 +46,11 @@ public class GeminiSessionHandler {
             System.out.println("Response: " + responseObj.toString());
             JSONObject content = responseObj.getJSONObject("content");
             sessionConvo.getJSONArray("contents").put(content);
-            System.out.println("Response: " + content.getJSONArray("parts").getJSONObject(0).get("text").toString());
+            return content.getJSONArray("parts").getJSONObject(0).get("text").toString();
         }
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return null;
         }
     }
 
