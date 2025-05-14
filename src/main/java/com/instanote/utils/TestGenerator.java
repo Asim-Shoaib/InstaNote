@@ -19,15 +19,11 @@ public class TestGenerator {
             """
     ;
 
-    private String videoUrl;
-    private int numQuestions;
     private String transcriptText;
 
     private GeminiSessionHandler geminiSessionHandler = new GeminiSessionHandler();
     
     public TestGenerator(String videoUrl, int numQuestions, boolean isPlaylist) {
-        this.videoUrl = videoUrl;
-        this.numQuestions = numQuestions;
         if (isPlaylist) {
             try {
                 transcriptText = TranscriptionHandler.getPlaylistTranscript(videoUrl);
@@ -58,7 +54,7 @@ public class TestGenerator {
             System.out.println("Error generating MCQs.");
             return null;
         }
-        return this.extractExactJson(response);
+        return extractExactJson(response);
     }
 
     public static String extractExactJson (String text){
