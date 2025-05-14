@@ -1,8 +1,8 @@
 package com.instanote.esp.service;
 
 import com.instanote.esp.repository.UserRepository;
+import com.instanote.esp.requests.JwtResponse;
 import com.instanote.esp.models.User;
-import com.instanote.requests.JwtResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class AuthService {
 
     public String registerUser(User user){
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return "Email already registered.";
+            return "Username alsready registered.";
         }
 
         user.setPassword(user.getPassword());

@@ -1,4 +1,4 @@
-package com.instanote.requests;
+package com.instanote.esp.requests;
 
 public class JwtResponse {
 
