@@ -33,13 +33,10 @@ public class NotesGenerator {
     }
     """
 ;
-    private String videourl;
     private String transcriptText;
     private GeminiSessionHandler geminiSessionHandler = new GeminiSessionHandler();
 
     public NotesGenerator(String videourl) {
-
-        this.videourl = videourl;
 
         try {
             transcriptText = TranscriptionHandler.getTranscript(videourl);
