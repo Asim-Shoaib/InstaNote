@@ -5,9 +5,9 @@ public class TestGenerator {
     private static String prompt = 
             """
                 You are a helpful assistant. 
-                Your task is to generate multiple-choice questions (MCQs) based on the provided transcript of a YouTube video. 
-                The MCQs should be designed to test the viewer's understanding of the video's content.
-                All the questions should be focused at judging the viewer's understanding of the video not his memorization skills (unless you believe that its necessary).
+                Your task is to generate notes based on the provided transcript of a YouTube video. 
+                The noteshould be designed to give the viewer the best understanding of the course material.
+                All the notes should be focused at judging the viewer's understanding of the video not his memorization skills (unless you believe that its necessary).
                 Each question should have one correct answer and three distractors. 
                 The questions should be clear, concise, and relevant to the video's topic. 
                 Questions should be of intermediate difficulty level.
@@ -25,7 +25,6 @@ public class TestGenerator {
 
     private GeminiSessionHandler geminiSessionHandler = new GeminiSessionHandler();
     
-
     public TestGenerator(String videoUrl, int numQuestions, boolean isPlaylist) {
         this.videoUrl = videoUrl;
         this.numQuestions = numQuestions;
@@ -62,7 +61,7 @@ public class TestGenerator {
         return this.extractExactJson(response);
     }
 
-    private String extractExactJson (String text){
+    public static String extractExactJson (String text){
         String validJson = text
                             .replace("\\\"", "\"")
                             .replace("\\n", "\n")
