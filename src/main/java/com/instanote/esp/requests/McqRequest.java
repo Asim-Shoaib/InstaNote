@@ -1,4 +1,4 @@
-package com.instanote.requests;
+package com.esp.instanote.requests;
 
 public class McqRequest {
     private String url;
