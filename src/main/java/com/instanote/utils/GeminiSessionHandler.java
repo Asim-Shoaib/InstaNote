@@ -42,6 +42,7 @@ public class GeminiSessionHandler {
             .build();
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println("Response code: " + response.statusCode());
             JSONObject responseObj = new JSONObject(response.body()).getJSONArray("candidates").getJSONObject(0);
             System.out.println("Response: " + responseObj.toString());
             JSONObject content = responseObj.getJSONObject("content");

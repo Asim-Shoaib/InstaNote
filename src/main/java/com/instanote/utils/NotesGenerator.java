@@ -40,7 +40,6 @@ public class NotesGenerator {
 
         try {
             transcriptText = TranscriptionHandler.getTranscript(videourl);
-
         } catch(Exception e) {
             System.out.println("Error fetching transcript: " + e.getMessage());
             e.printStackTrace();
@@ -51,11 +50,12 @@ public class NotesGenerator {
         }
         prompt = prompt.concat(String.format("Transcript: %s\n", transcriptText));
         prompt = prompt.concat("Generate notes based on the transcript and make sure to follow the above instructions.\n");
-
     }
 
     public String generateNotes() {
         String response = geminiSessionHandler.sendMessage(prompt);
+        System.out.println("Raw API response: " + response);
+
         if (response == null || response.isEmpty()) {
             System.out.println("Error generating notes.");
             return null;
