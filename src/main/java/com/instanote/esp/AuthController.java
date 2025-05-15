@@ -10,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpHeaders;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -21,7 +23,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
-        return new ResponseEntity<>(authService.registerUser(user), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity<>(authService.registerUser(user), HttpStatus.CREATED);
+        }
+        catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")
