@@ -23,7 +23,7 @@ public class AuthService {
 
     public String registerUser(User user){
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return "Username alsready registered.";
+           throw new RuntimeException("User already exists");
         }
 
         user.setPassword(user.getPassword());
