@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.instanote.requests.NotesRequest;
+import com.instanote.utils.NotesGenerator;
+
 @RestController
 @RequestMapping("/api")
 public class ApiController {
@@ -21,5 +24,12 @@ public class ApiController {
         TestGenerator testGenerator = new TestGenerator(mcqRequest.getUrl(), mcqRequest.getNumQuestions(), mcqRequest.isPlaylist());
         String mcqs = testGenerator.generateMCQs();
         return mcqs;
+    }
+
+    @PostMapping(value = "/generate-notes", produces = "application/json")
+    public String generateNotes(@RequestBody NotesRequest notesRequest) {
+        NotesGenerator notesGenerator = new NotesGenerator(notesRequest.getUrl());
+        String notes = notesGenerator.generateNotes();
+        return notes;
     }
 }

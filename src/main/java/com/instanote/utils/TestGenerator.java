@@ -58,7 +58,7 @@ public class TestGenerator {
             System.out.println("Error generating MCQs.");
             return null;
         }
-        return this.extractExactJson(response);
+        return extractExactJson(response);
     }
 
     public static String extractExactJson (String text){
