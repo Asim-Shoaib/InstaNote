@@ -58,11 +58,7 @@ public class TestGenerator {
     }
 
     public static String extractExactJson (String text){
-        String validJson = text
-                            .replace("\\\"", "\"")
-                            .replace("\\n", "\n")
-                            .replace("\\t", "\t");
-
+        String validJson = text;
         validJson = validJson.replace("```json", "");
         validJson = validJson.replace("`", "");
         return validJson;

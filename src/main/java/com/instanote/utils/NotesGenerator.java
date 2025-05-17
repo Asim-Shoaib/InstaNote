@@ -34,10 +34,10 @@ public class NotesGenerator {
     """
 ;
     private String transcriptText;
-    private GeminiSessionHandler geminiSessionHandler = new GeminiSessionHandler();
+    private GeminiSessionHandler geminiSessionHandler;
 
     public NotesGenerator(String videourl) {
-
+        geminiSessionHandler = new GeminiSessionHandler();
         try {
             transcriptText = TranscriptionHandler.getTranscript(videourl);
         } catch(Exception e) {
@@ -48,6 +48,7 @@ public class NotesGenerator {
         if(transcriptText == null || transcriptText.isEmpty()) {
             System.out.println("Transcript is empty or null");
         }
+        prompt = prompt.concat(String.format("Youtube Video Url: %s\n", videourl));
         prompt = prompt.concat(String.format("Transcript: %s\n", transcriptText));
         prompt = prompt.concat("Generate notes based on the transcript and make sure to follow the above instructions.\n");
     }

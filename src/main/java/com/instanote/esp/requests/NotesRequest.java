@@ -1,4 +1,4 @@
-package com.esp.instanote.requests;
+package com.instanote.esp.requests;
 
 public class NotesRequest {
      
