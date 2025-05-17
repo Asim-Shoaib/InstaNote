@@ -37,9 +37,14 @@ public class ApiController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping(value = "/generate-mcqs", produces = "application/json")
-    public String generateMcqs(@RequestBody McqRequest mcqRequest) {
-        TestGenerator testGenerator = new TestGenerator(mcqRequest.getUrl(), mcqRequest.getNumQuestions(), mcqRequest.isPlaylist());
+    @PostMapping(value = "/generate-mcqs/{id}/{numQuestions}", produces = "application/json")
+    public String generateMcqs(@PathVariable Long id, @PathVariable int numQuestions) {
+        Notes note = notesRepository.findById(id).orElse(null);
+        if (note == null) {
+            return "Note not found";
+        }
+        System.out.println("Note found: " + note.getNotes());
+        TestGenerator testGenerator = new TestGenerator(note.getNotes(), numQuestions);
         String mcqs = testGenerator.generateMCQs();
         return mcqs;
     }
