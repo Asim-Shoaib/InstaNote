@@ -2,7 +2,7 @@ package com.instanote.utils;
 
 
 public class TestGenerator {
-    private static String prompt = 
+    private String prompt = 
             """
                 You are a helpful assistant. 
                 Your task is to generate notes based on the provided transcript of a YouTube video or the notes generated from it. 
